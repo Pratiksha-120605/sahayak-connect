@@ -9,38 +9,383 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SigninRouteImport } from './routes/signin'
+import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BeneficiaryRouteImport } from './routes/beneficiary'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VolunteerIndexRouteImport } from './routes/volunteer.index'
+import { Route as BeneficiaryIndexRouteImport } from './routes/beneficiary.index'
+import { Route as VolunteerRequestsRouteImport } from './routes/volunteer.requests'
+import { Route as VolunteerProfileRouteImport } from './routes/volunteer.profile'
+import { Route as VolunteerMessagesRouteImport } from './routes/volunteer.messages'
+import { Route as VolunteerHistoryRouteImport } from './routes/volunteer.history'
+import { Route as VolunteerAvailabilityRouteImport } from './routes/volunteer.availability'
+import { Route as VolunteerActiveRouteImport } from './routes/volunteer.active'
+import { Route as RequestRequestIdRouteImport } from './routes/request.$requestId'
+import { Route as BeneficiaryRequestsRouteImport } from './routes/beneficiary.requests'
+import { Route as BeneficiaryProfileRouteImport } from './routes/beneficiary.profile'
+import { Route as BeneficiaryMessagesRouteImport } from './routes/beneficiary.messages'
 
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyRoute = SafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeneficiaryRoute = BeneficiaryRouteImport.update({
+  id: '/beneficiary',
+  path: '/beneficiary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VolunteerIndexRoute = VolunteerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const BeneficiaryIndexRoute = BeneficiaryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BeneficiaryRoute,
+} as any)
+const VolunteerRequestsRoute = VolunteerRequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const VolunteerProfileRoute = VolunteerProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const VolunteerMessagesRoute = VolunteerMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const VolunteerHistoryRoute = VolunteerHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const VolunteerAvailabilityRoute = VolunteerAvailabilityRouteImport.update({
+  id: '/availability',
+  path: '/availability',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const VolunteerActiveRoute = VolunteerActiveRouteImport.update({
+  id: '/active',
+  path: '/active',
+  getParentRoute: () => VolunteerRoute,
+} as any)
+const RequestRequestIdRoute = RequestRequestIdRouteImport.update({
+  id: '/request/$requestId',
+  path: '/request/$requestId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeneficiaryRequestsRoute = BeneficiaryRequestsRouteImport.update({
+  id: '/requests',
+  path: '/requests',
+  getParentRoute: () => BeneficiaryRoute,
+} as any)
+const BeneficiaryProfileRoute = BeneficiaryProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => BeneficiaryRoute,
+} as any)
+const BeneficiaryMessagesRoute = BeneficiaryMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => BeneficiaryRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/beneficiary': typeof BeneficiaryRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/volunteer': typeof VolunteerRouteWithChildren
+  '/beneficiary/messages': typeof BeneficiaryMessagesRoute
+  '/beneficiary/profile': typeof BeneficiaryProfileRoute
+  '/beneficiary/requests': typeof BeneficiaryRequestsRoute
+  '/request/$requestId': typeof RequestRequestIdRoute
+  '/volunteer/active': typeof VolunteerActiveRoute
+  '/volunteer/availability': typeof VolunteerAvailabilityRoute
+  '/volunteer/history': typeof VolunteerHistoryRoute
+  '/volunteer/messages': typeof VolunteerMessagesRoute
+  '/volunteer/profile': typeof VolunteerProfileRoute
+  '/volunteer/requests': typeof VolunteerRequestsRoute
+  '/beneficiary/': typeof BeneficiaryIndexRoute
+  '/volunteer/': typeof VolunteerIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/beneficiary/messages': typeof BeneficiaryMessagesRoute
+  '/beneficiary/profile': typeof BeneficiaryProfileRoute
+  '/beneficiary/requests': typeof BeneficiaryRequestsRoute
+  '/request/$requestId': typeof RequestRequestIdRoute
+  '/volunteer/active': typeof VolunteerActiveRoute
+  '/volunteer/availability': typeof VolunteerAvailabilityRoute
+  '/volunteer/history': typeof VolunteerHistoryRoute
+  '/volunteer/messages': typeof VolunteerMessagesRoute
+  '/volunteer/profile': typeof VolunteerProfileRoute
+  '/volunteer/requests': typeof VolunteerRequestsRoute
+  '/beneficiary': typeof BeneficiaryIndexRoute
+  '/volunteer': typeof VolunteerIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/beneficiary': typeof BeneficiaryRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/safety': typeof SafetyRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/volunteer': typeof VolunteerRouteWithChildren
+  '/beneficiary/messages': typeof BeneficiaryMessagesRoute
+  '/beneficiary/profile': typeof BeneficiaryProfileRoute
+  '/beneficiary/requests': typeof BeneficiaryRequestsRoute
+  '/request/$requestId': typeof RequestRequestIdRoute
+  '/volunteer/active': typeof VolunteerActiveRoute
+  '/volunteer/availability': typeof VolunteerAvailabilityRoute
+  '/volunteer/history': typeof VolunteerHistoryRoute
+  '/volunteer/messages': typeof VolunteerMessagesRoute
+  '/volunteer/profile': typeof VolunteerProfileRoute
+  '/volunteer/requests': typeof VolunteerRequestsRoute
+  '/beneficiary/': typeof BeneficiaryIndexRoute
+  '/volunteer/': typeof VolunteerIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/beneficiary'
+    | '/contact'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/safety'
+    | '/signin'
+    | '/signup'
+    | '/verify-email'
+    | '/volunteer'
+    | '/beneficiary/messages'
+    | '/beneficiary/profile'
+    | '/beneficiary/requests'
+    | '/request/$requestId'
+    | '/volunteer/active'
+    | '/volunteer/availability'
+    | '/volunteer/history'
+    | '/volunteer/messages'
+    | '/volunteer/profile'
+    | '/volunteer/requests'
+    | '/beneficiary/'
+    | '/volunteer/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/safety'
+    | '/signin'
+    | '/signup'
+    | '/verify-email'
+    | '/beneficiary/messages'
+    | '/beneficiary/profile'
+    | '/beneficiary/requests'
+    | '/request/$requestId'
+    | '/volunteer/active'
+    | '/volunteer/availability'
+    | '/volunteer/history'
+    | '/volunteer/messages'
+    | '/volunteer/profile'
+    | '/volunteer/requests'
+    | '/beneficiary'
+    | '/volunteer'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/beneficiary'
+    | '/contact'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/safety'
+    | '/signin'
+    | '/signup'
+    | '/verify-email'
+    | '/volunteer'
+    | '/beneficiary/messages'
+    | '/beneficiary/profile'
+    | '/beneficiary/requests'
+    | '/request/$requestId'
+    | '/volunteer/active'
+    | '/volunteer/availability'
+    | '/volunteer/history'
+    | '/volunteer/messages'
+    | '/volunteer/profile'
+    | '/volunteer/requests'
+    | '/beneficiary/'
+    | '/volunteer/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BeneficiaryRoute: typeof BeneficiaryRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SafetyRoute: typeof SafetyRoute
+  SigninRoute: typeof SigninRoute
+  SignupRoute: typeof SignupRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
+  VolunteerRoute: typeof VolunteerRouteWithChildren
+  RequestRequestIdRoute: typeof RequestRequestIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety': {
+      id: '/safety'
+      path: '/safety'
+      fullPath: '/safety'
+      preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beneficiary': {
+      id: '/beneficiary'
+      path: '/beneficiary'
+      fullPath: '/beneficiary'
+      preLoaderRoute: typeof BeneficiaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +393,148 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/volunteer/': {
+      id: '/volunteer/'
+      path: '/'
+      fullPath: '/volunteer/'
+      preLoaderRoute: typeof VolunteerIndexRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/beneficiary/': {
+      id: '/beneficiary/'
+      path: '/'
+      fullPath: '/beneficiary/'
+      preLoaderRoute: typeof BeneficiaryIndexRouteImport
+      parentRoute: typeof BeneficiaryRoute
+    }
+    '/volunteer/requests': {
+      id: '/volunteer/requests'
+      path: '/requests'
+      fullPath: '/volunteer/requests'
+      preLoaderRoute: typeof VolunteerRequestsRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/volunteer/profile': {
+      id: '/volunteer/profile'
+      path: '/profile'
+      fullPath: '/volunteer/profile'
+      preLoaderRoute: typeof VolunteerProfileRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/volunteer/messages': {
+      id: '/volunteer/messages'
+      path: '/messages'
+      fullPath: '/volunteer/messages'
+      preLoaderRoute: typeof VolunteerMessagesRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/volunteer/history': {
+      id: '/volunteer/history'
+      path: '/history'
+      fullPath: '/volunteer/history'
+      preLoaderRoute: typeof VolunteerHistoryRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/volunteer/availability': {
+      id: '/volunteer/availability'
+      path: '/availability'
+      fullPath: '/volunteer/availability'
+      preLoaderRoute: typeof VolunteerAvailabilityRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/volunteer/active': {
+      id: '/volunteer/active'
+      path: '/active'
+      fullPath: '/volunteer/active'
+      preLoaderRoute: typeof VolunteerActiveRouteImport
+      parentRoute: typeof VolunteerRoute
+    }
+    '/request/$requestId': {
+      id: '/request/$requestId'
+      path: '/request/$requestId'
+      fullPath: '/request/$requestId'
+      preLoaderRoute: typeof RequestRequestIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beneficiary/requests': {
+      id: '/beneficiary/requests'
+      path: '/requests'
+      fullPath: '/beneficiary/requests'
+      preLoaderRoute: typeof BeneficiaryRequestsRouteImport
+      parentRoute: typeof BeneficiaryRoute
+    }
+    '/beneficiary/profile': {
+      id: '/beneficiary/profile'
+      path: '/profile'
+      fullPath: '/beneficiary/profile'
+      preLoaderRoute: typeof BeneficiaryProfileRouteImport
+      parentRoute: typeof BeneficiaryRoute
+    }
+    '/beneficiary/messages': {
+      id: '/beneficiary/messages'
+      path: '/messages'
+      fullPath: '/beneficiary/messages'
+      preLoaderRoute: typeof BeneficiaryMessagesRouteImport
+      parentRoute: typeof BeneficiaryRoute
+    }
   }
 }
 
+interface BeneficiaryRouteChildren {
+  BeneficiaryMessagesRoute: typeof BeneficiaryMessagesRoute
+  BeneficiaryProfileRoute: typeof BeneficiaryProfileRoute
+  BeneficiaryRequestsRoute: typeof BeneficiaryRequestsRoute
+  BeneficiaryIndexRoute: typeof BeneficiaryIndexRoute
+}
+
+const BeneficiaryRouteChildren: BeneficiaryRouteChildren = {
+  BeneficiaryMessagesRoute: BeneficiaryMessagesRoute,
+  BeneficiaryProfileRoute: BeneficiaryProfileRoute,
+  BeneficiaryRequestsRoute: BeneficiaryRequestsRoute,
+  BeneficiaryIndexRoute: BeneficiaryIndexRoute,
+}
+
+const BeneficiaryRouteWithChildren = BeneficiaryRoute._addFileChildren(
+  BeneficiaryRouteChildren,
+)
+
+interface VolunteerRouteChildren {
+  VolunteerActiveRoute: typeof VolunteerActiveRoute
+  VolunteerAvailabilityRoute: typeof VolunteerAvailabilityRoute
+  VolunteerHistoryRoute: typeof VolunteerHistoryRoute
+  VolunteerMessagesRoute: typeof VolunteerMessagesRoute
+  VolunteerProfileRoute: typeof VolunteerProfileRoute
+  VolunteerRequestsRoute: typeof VolunteerRequestsRoute
+  VolunteerIndexRoute: typeof VolunteerIndexRoute
+}
+
+const VolunteerRouteChildren: VolunteerRouteChildren = {
+  VolunteerActiveRoute: VolunteerActiveRoute,
+  VolunteerAvailabilityRoute: VolunteerAvailabilityRoute,
+  VolunteerHistoryRoute: VolunteerHistoryRoute,
+  VolunteerMessagesRoute: VolunteerMessagesRoute,
+  VolunteerProfileRoute: VolunteerProfileRoute,
+  VolunteerRequestsRoute: VolunteerRequestsRoute,
+  VolunteerIndexRoute: VolunteerIndexRoute,
+}
+
+const VolunteerRouteWithChildren = VolunteerRoute._addFileChildren(
+  VolunteerRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BeneficiaryRoute: BeneficiaryRouteWithChildren,
+  ContactRoute: ContactRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SafetyRoute: SafetyRoute,
+  SigninRoute: SigninRoute,
+  SignupRoute: SignupRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
+  VolunteerRoute: VolunteerRouteWithChildren,
+  RequestRequestIdRoute: RequestRequestIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
